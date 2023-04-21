@@ -1,26 +1,22 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
+ * main - Prints the alphabets in lowercase, except for q and e.
  *
  * Return: Always 0 (success)
  */
 
 int main(void)
 {
-int lowerCase = 'a';
-while (lower <= 'z')
-{
-if (lowerCase == 'e' || lowerCase == 'q')
+	char letter;
+
+	for (letter = 'a'; letter <= 'z'; letter++)
+	{
+	if (letter != 'e' && letter != 'q')
+		putchar(letter);
+	}
+
+	putchar('\n');
+
+	return (0);
 }
-{
-lowerCase += 1;
-}
-else
-{
-putchar(lowerCase);
-lowerCase += 1;
-}
-putchar("\n");
-return (0);
-}	
