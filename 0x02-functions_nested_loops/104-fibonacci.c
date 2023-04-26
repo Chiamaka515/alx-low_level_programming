@@ -1,47 +1,47 @@
+#include <limits.h>
+#include <math.h>
 #include <stdio.h>
 
 /**
- * main - fibonacci <3
+ * main - entry point
  *
- * Purpose - no hardcode
- *
- * Return: (Success)
+ * Return: Always 0.
  */
-
 int main(void)
 {
-	unsigned long int i;
-	unsigned long int bef = 1
-	unsigned long int aft = 2;
-	unsigned long int l = 1000000000;
-	unsigned long int bef1;
-	unsigned long int bef2;
-	unsigned long int aft1;
-	unsigned long int aft2;
+	int i;
+	int j;
+	long a_lo = 1;
+	long b_lo = 2;
+	long a_hi = 0;
+	long b_hi = 0;
+	int limit_len = floor(log10(LONG_MAX / 2));
+	long limit = pow(10, limit_len);
 
-	printf("%lu", bef);
-
-	for (i = 1; i < 91; i++)
+	for (i = 0; i < 98; ++i)
 	{
-		printf(", %lu", aft);
-		aft += bef;
-		bef = aft - bef;
+		if (a_hi)
+		{
+			printf("%ld", a_hi);
+			for (j = floor(log10(a_lo)) + 1; j < limit_len; ++j)
+				putchar('0');
+		}
+		printf("%ld", a_lo);
+		b_lo = b_lo + a_lo;
+		a_lo = b_lo - a_lo;
+		a_hi = b_hi - a_hi;
+		b_hi = b_hi + a_hi;
+		if (b_lo >= limit)
+		{
+			b_hi += b_lo / limit;
+			b_lo %= limit;
+			a_hi += a_lo / limit;
+			a_lo %= limit;
+		}
+		if (i < 97)
+			printf(", ");
 	}
+	putchar('\n');
 
-	bef1 = (bef / l);
-	bef2 = (bef % l);
-	aft1 = (aft / l);
-	aft2 = (aft % 1);
-
-	for (i = 92; i < 99; ++i)
-	{
-		printf(', %lu", aft1 + (aft2 / l));
-		printf("%lu", aft2 % l);
-		aft1 = aft1 + bef1;
-		bef1 = aft1 - bef1;
-		aft2 = aft2 + bef2;
-		bef2 = aft2 - bef2;
-	}
-	printf("\n");
 	return (0);
 }
