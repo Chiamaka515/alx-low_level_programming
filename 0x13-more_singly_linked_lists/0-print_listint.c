@@ -1,8 +1,9 @@
 #include "lists.h"
+#include <stdio.h>
 
 /**
- * print_listint - prints all the elements of a list
- * @h: list to print elements of type listint_t
+ * print_listint - function that prints all the elements of a listint_t list
+ * @h: pointer to the head of the linked list
  * Return: size_t of the list
  */
 size_t print_listint(const listint_t *h)
